@@ -1,3 +1,9 @@
-// This is a comment
-print( 50m + 20ft )
+// Declare the quantities and their base units
+qty length picometer(pm)
 
+// Declare the available units
+unit meter(m) = 1000000000000pm
+unit feet(ft) = 3281000000000pm
+
+// Now perform a computation
+50m+20ft
