@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":[["match_identifier","Parses an identifier out of a series of characters"],["match_number","Parses a number out of a series of numerical characters"],["skip_line","Skips the current line by searching for the nearest newline character and returning its index If the index is too high, it will instead return the maximum index of the source string"]]};

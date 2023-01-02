@@ -1,3 +1,5 @@
+//! This is a piece of documentation
+
 use anyhow::Result;
 use clap::Parser;
 use interface::*;
