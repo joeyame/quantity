@@ -1,10 +1,10 @@
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum Token {
     // Single-character tokens
     Plus,
-    Minus,
-    Slash,
-    Star,
+    // Minus,
+    // Slash,
+    // Star,
     LeftParenthesis,
     RightParenthesis,
 
