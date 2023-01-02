@@ -1,3 +1,7 @@
+//! The interface module contains logic that allows the interpreter
+//! to run both as an interpreter and as a REPL. This module is not
+//! about the language so much as it is about how the language is read.
+
 use std::{fs, path::PathBuf};
 
 use anyhow::Result;

@@ -10,6 +10,20 @@
 //! | Functional | Quantity code shall be purely functional yet organized           |
 //! | Expressive | Quantity code shall require minimal boilerplate to be productive |
 //!
+// ! See the full documentation at [**joeyame.github.io/quantity**](https://joeyame.github.io/quantity)
+//!
+//! ## Table of Contents
+//! The following table will link to the official documentation for this project
+//!
+//! | Page                                                            | Description                                                   |
+//! | --------------------------------------------------------------- | ------------------------------------------------------------- |
+//! | [Docs](https://joeyame.github.io/quantity/docs)                 | The documentation related to the language itself              |
+//! | [Interface](https://joeyame.github.io/quantity/interface)       | Documentation about how the interpreter can be run            |
+//! | [Interpreting](https://joeyame.github.io/quantity/interpreting) | Documentation about the interpreter itself                    |
+//! | [Parsing](https://joeyame.github.io/quantity/parsing)           | Documentation about how the AST is generated                  |
+//! | [Scanning](https://joeyame.github.io/quantity/scanning)         | Documentation about how the source code is parsed into tokens |
+//!
+//!
 //! ## Quantity Code Examples
 //! The following snippets of code show what is (or will be) possible using the quantity programming language
 //!
@@ -46,7 +60,7 @@
 //! For example, if `34 meters` ever shows up in the code, it will generate a value of 34 and attach it to the meter 'type'.
 //!
 //! The following code block will show the end value of various expressions:
-//! ```rust
+//! ```
 //! 45 meters           // 45 meters
 //! 3.281ft             // 1 meter
 //! 1meter * 3.281 feet // 1 meter*meter
@@ -88,38 +102,6 @@
 //!     ```Rust
 //!     45ft rect_area 10m // Returns an area value which carries the ft*m flag
 //!     ```
-//!
-//! ```qty
-//!
-//! // Computations can be performed between different units of the same quantity.
-//! // The numbers will automatically be converted to the base unit - in this case meters.
-//! 40m + 10ft + 1.5 meters + 0.5feet
-//! // Notice that you can use shorthand for the units, attach them to the number, or have a space in-between.
-//!
-//! // Converting between different units is easy using the "in" operator
-//! 34ft in meters
-//!
-//! // Defining Operators
-//! // The addition and subtraction operators are automatically generated for different units of the same quantity, as are the scalar multiplication and division operations.
-//! // We can add our own operator by using the
-//!
-//! // Define a generic function which uses lengths to calculate the area of a rectangle
-//! area rectangle_area( length l, length w ) {
-//!     l * w
-//! }
-//!
-//! // The function can now be called in three different ways
-//!
-//! // Method 1: Traditional
-//! rectangle_area( 10ft, 3.5m )
-//!
-//! // Method 2: Operation Syntax
-//! 10ft rectangle_area 3.5m
-//!
-//! // Method 3: Method Syntax
-//! 10ft.rectangle_area( length )
-//!
-//! ```
 
 use anyhow::Result;
 use clap::Parser;
@@ -127,6 +109,7 @@ use interface::*;
 use std::path::PathBuf;
 
 // Load in core modules
+mod docs;
 mod interface;
 mod interpreting;
 mod parsing;
