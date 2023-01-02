@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":[["main",""],["run",""]],"mod":[["interface",""],["interpreting",""],["parsing",""],["scanning",""]]};
+window.SIDEBAR_ITEMS = {"fn":[["main",""],["run",""]],"mod":[["docs","This module contains documentation related to the language itself"],["interface","The interface module contains logic that allows the interpreter to run both as an interpreter and as a REPL. This module is not about the language so much as it is about how the language is read."],["interpreting",""],["parsing",""],["scanning",""]]};
