@@ -1,3 +1,0 @@
-(function() {var implementors = {
-"quantity":[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.65.0/core/cmp/trait.PartialEq.html\" title=\"trait core::cmp::PartialEq\">PartialEq</a>&lt;<a class=\"enum\" href=\"quantity/scanning/tokens/enum.Token.html\" title=\"enum quantity::scanning::tokens::Token\">Token</a>&gt; for <a class=\"enum\" href=\"quantity/scanning/tokens/enum.Token.html\" title=\"enum quantity::scanning::tokens::Token\">Token</a>"]]
-};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

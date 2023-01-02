@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"fn":[["run_file",""],["run_prompt",""]],"struct":[["Cli",""]]};

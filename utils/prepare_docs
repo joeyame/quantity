@@ -1,4 +1,8 @@
+# Set up for github pages
 cargo doc --no-deps
 rm -r ./docs
 echo "<meta http-equiv=\"refresh\" content=\"0; url=quantity\">" > target/doc/index.html
 cp -r target/doc ./docs
+
+# Update readme with the current documentation state of main.rs
+cargo readme --no-title --no-indent-headings > README.md

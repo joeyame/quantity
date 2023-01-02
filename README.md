@@ -1,5 +1,5 @@
 # The Quantity Programming Language
-A type-driven, mid-level programming language meant for scientific computation and simulation 
+A type-driven, mid-level programming language meant for scientific computation and simulation
 
 The main design points driving the creation of this programming language are:
 
@@ -101,7 +101,7 @@ There are three main ways to call functions:
 
 // Defining Operators
 // The addition and subtraction operators are automatically generated for different units of the same quantity, as are the scalar multiplication and division operations.
-// We can add our own operator by using the 
+// We can add our own operator by using the
 
 // Define a generic function which uses lengths to calculate the area of a rectangle
 area rectangle_area( length l, length w ) {

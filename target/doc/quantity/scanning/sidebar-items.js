@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"mod":[["matching","The matching module contains various utility functions to make the pattern matching part of the scanner less complex"],["scanner",""],["tokens",""]]};
