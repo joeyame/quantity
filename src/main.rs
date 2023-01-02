@@ -10,8 +10,6 @@
 //! | Functional | Quantity code shall be purely functional yet organized           |
 //! | Expressive | Quantity code shall require minimal boilerplate to be productive |
 //!
-// ! See the full documentation at [**joeyame.github.io/quantity**](https://joeyame.github.io/quantity)
-//!
 //! ## Table of Contents
 //! The following table will link to the official documentation for this project
 //!
@@ -23,6 +21,7 @@
 //! | [Parsing](https://joeyame.github.io/quantity/parsing)           | Documentation about how the AST is generated                  |
 //! | [Scanning](https://joeyame.github.io/quantity/scanning)         | Documentation about how the source code is parsed into tokens |
 //!
+// End of readme documentation
 //!
 //! ## Quantity Code Examples
 //! The following snippets of code show what is (or will be) possible using the quantity programming language
