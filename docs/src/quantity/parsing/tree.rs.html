@@ -5,12 +5,18 @@
 <span id="5">5</span>
 <span id="6">6</span>
 <span id="7">7</span>
-</pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::scanning::Token;
+<span id="8">8</span>
+<span id="9">9</span>
+<span id="10">10</span>
+</pre><pre class="rust"><code><span class="kw">use </span>std::default;
+
+<span class="kw">use </span><span class="kw">crate</span>::interpreting::QType;
 
 <span class="attribute">#[derive(Debug)]
 </span><span class="kw">pub enum </span>TreeNode {
-    Number(f64),
-    Binary(Box&lt;TreeNode&gt;, Token, Box&lt;TreeNode&gt;),
+    Value(Box&lt;<span class="kw">dyn </span>QType&gt;),
+    Print(Box&lt;TreeNode&gt;),
+    Expression(Box&lt;TreeNode&gt;),
 }
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="quantity" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

@@ -15,7 +15,7 @@ The following table will link to the official documentation for this project
 
 | Page                                                                     | Description                                                   |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------- |
-| [Docs](https://joeyame.github.io/quantity/quantity/docs)                 | The documentation related to the language itself              |
+| [Docs](https://joeyame.github.io/quantity/quantity/docs)                 | Documentation related to the language itself                  |
 | [Interface](https://joeyame.github.io/quantity/quantity/interface)       | Documentation about how the interpreter can be run            |
 | [Interpreting](https://joeyame.github.io/quantity/quantity/interpreting) | Documentation about the interpreter itself                    |
 | [Parsing](https://joeyame.github.io/quantity/quantity/parsing)           | Documentation about how the AST is generated                  |

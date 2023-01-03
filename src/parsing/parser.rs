@@ -16,25 +16,33 @@ impl Parser {
     fn parse(&mut self) -> Vec<TreeNode> {
         let mut tree = Vec::<TreeNode>::new();
         while self.tokens[self.index] != Token::Eof {
-            tree.push(self.term());
+            tree.push(self.statement());
         }
 
         tree
     }
 
-    fn term(&mut self) -> TreeNode {
-        let mut left = self.primary();
-        while self.tokens[self.index] == Token::Plus {
-            self.index += 1;
-            left = TreeNode::Binary(left.into(), Token::Plus, self.primary().into())
+    fn statement(&mut self) -> TreeNode {
+        match &self.tokens[self.index] {
+            Token::Identifier(x) if x == "print" => self.print_stmt(),
+            _ => self.expression_stmt(),
         }
-        left
     }
 
-    fn primary(&mut self) -> TreeNode {
+    fn print_stmt(&mut self) -> TreeNode {
         self.index += 1;
-        match self.tokens[self.index - 1] {
-            Token::Number(num) => TreeNode::Number(num),
+        TreeNode::Print(self.expression().into())
+    }
+
+    fn expression_stmt(&mut self) -> TreeNode {
+        TreeNode::Expression(self.expression().into())
+    }
+
+    fn expression(&mut self) -> TreeNode {
+        self.index += 1;
+        match &self.tokens[self.index - 1] {
+            Token::Number(num) => TreeNode::Value(Box::new(*num)),
+            Token::Identifier(id) => TreeNode::Value(Box::new(id.clone())),
             _ => todo!(),
         }
     }

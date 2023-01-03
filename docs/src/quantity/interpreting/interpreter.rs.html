@@ -18,24 +18,42 @@
 <span id="18">18</span>
 <span id="19">19</span>
 <span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
 </pre><pre class="rust"><code><span class="kw">use </span>anyhow::{bail, <span class="prelude-ty">Result</span>};
 
 <span class="kw">use </span><span class="kw">crate</span>::parsing::TreeNode;
 
+<span class="kw">use </span><span class="kw">super</span>::QType;
+
 <span class="kw">pub fn </span>interpret(tree: Vec&lt;TreeNode&gt;) -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+    <span class="macro">println!</span>(<span class="string">&quot;~~~Program Start~~~&quot;</span>);
     <span class="kw">for </span>node <span class="kw">in </span>tree {
-        <span class="macro">println!</span>(<span class="string">&quot;Expression value: {}&quot;</span>, interpret_node(node)<span class="question-mark">?</span>)
+        interpret_node(node)<span class="question-mark">?</span>;
     }
     <span class="prelude-val">Ok</span>(())
 }
 
-<span class="kw">fn </span>interpret_node(node: TreeNode) -&gt; <span class="prelude-ty">Result</span>&lt;f64&gt; {
-    <span class="kw">use </span><span class="kw">crate</span>::scanning::Token;
+<span class="kw">fn </span>interpret_node(node: TreeNode) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="prelude-ty">Option</span>&lt;Box&lt;<span class="kw">dyn </span>QType&gt;&gt;&gt; {
     <span class="kw">use </span>TreeNode::<span class="kw-2">*</span>;
     <span class="kw">match </span>node {
-        Binary(lhs, Token::Plus, rhs) =&gt; <span class="prelude-val">Ok</span>(interpret_node(<span class="kw-2">*</span>lhs)<span class="question-mark">? </span>+ interpret_node(<span class="kw-2">*</span>rhs)<span class="question-mark">?</span>),
-        Number(val) =&gt; <span class="prelude-val">Ok</span>(val),
-        Binary(<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) =&gt; <span class="macro">bail!</span>(<span class="string">&quot;Invalid operator!&quot;</span>),
+        Print(node) =&gt; {
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(value) = interpret_node(<span class="kw-2">*</span>node)<span class="question-mark">? </span>{
+                <span class="macro">println!</span>(<span class="string">&quot;{:?}&quot;</span>, value);
+                <span class="prelude-val">Ok</span>(<span class="prelude-val">None</span>)
+            } <span class="kw">else </span>{
+                <span class="macro">bail!</span>(<span class="string">&quot;Could not print non-value!&quot;</span>);
+            }
+        }
+        Expression(node) =&gt; interpret_node(<span class="kw-2">*</span>node),
+        Value(val) =&gt; <span class="prelude-val">Ok</span>(<span class="prelude-val">Some</span>(val)),
     }
 }
 </code></pre></div>

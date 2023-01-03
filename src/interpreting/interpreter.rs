@@ -2,19 +2,28 @@ use anyhow::{bail, Result};
 
 use crate::parsing::TreeNode;
 
+use super::QType;
+
 pub fn interpret(tree: Vec<TreeNode>) -> Result<()> {
+    println!("~~~Program Start~~~");
     for node in tree {
-        println!("Expression value: {}", interpret_node(node)?)
+        interpret_node(node)?;
     }
     Ok(())
 }
 
-fn interpret_node(node: TreeNode) -> Result<f64> {
-    use crate::scanning::Token;
+fn interpret_node(node: TreeNode) -> Result<Option<Box<dyn QType>>> {
     use TreeNode::*;
     match node {
-        Binary(lhs, Token::Plus, rhs) => Ok(interpret_node(*lhs)? + interpret_node(*rhs)?),
-        Number(val) => Ok(val),
-        Binary(_, _, _) => bail!("Invalid operator!"),
+        Print(node) => {
+            if let Some(value) = interpret_node(*node)? {
+                println!("{:?}", value);
+                Ok(None)
+            } else {
+                bail!("Could not print non-value!");
+            }
+        }
+        Expression(node) => interpret_node(*node),
+        Value(val) => Ok(Some(val)),
     }
 }

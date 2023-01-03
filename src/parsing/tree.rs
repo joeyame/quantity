@@ -1,7 +1,10 @@
-use crate::scanning::Token;
+use std::default;
+
+use crate::interpreting::QType;
 
 #[derive(Debug)]
 pub enum TreeNode {
-    Number(f64),
-    Binary(Box<TreeNode>, Token, Box<TreeNode>),
+    Value(Box<dyn QType>),
+    Print(Box<TreeNode>),
+    Expression(Box<TreeNode>),
 }

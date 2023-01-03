@@ -39,6 +39,14 @@
 <span id="39">39</span>
 <span id="40">40</span>
 <span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
 </pre><pre class="rust"><code><span class="kw">use </span><span class="kw">crate</span>::scanning::Token;
 
 <span class="kw">use </span><span class="kw">super</span>::tree::<span class="kw-2">*</span>;
@@ -57,25 +65,33 @@
     <span class="kw">fn </span>parse(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; Vec&lt;TreeNode&gt; {
         <span class="kw">let </span><span class="kw-2">mut </span>tree = Vec::&lt;TreeNode&gt;::new();
         <span class="kw">while </span><span class="self">self</span>.tokens[<span class="self">self</span>.index] != Token::Eof {
-            tree.push(<span class="self">self</span>.term());
+            tree.push(<span class="self">self</span>.statement());
         }
 
         tree
     }
 
-    <span class="kw">fn </span>term(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; TreeNode {
-        <span class="kw">let </span><span class="kw-2">mut </span>left = <span class="self">self</span>.primary();
-        <span class="kw">while </span><span class="self">self</span>.tokens[<span class="self">self</span>.index] == Token::Plus {
-            <span class="self">self</span>.index += <span class="number">1</span>;
-            left = TreeNode::Binary(left.into(), Token::Plus, <span class="self">self</span>.primary().into())
+    <span class="kw">fn </span>statement(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; TreeNode {
+        <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.tokens[<span class="self">self</span>.index] {
+            Token::Identifier(x) <span class="kw">if </span>x == <span class="string">&quot;print&quot; </span>=&gt; <span class="self">self</span>.print_stmt(),
+            <span class="kw">_ </span>=&gt; <span class="self">self</span>.expression_stmt(),
         }
-        left
     }
 
-    <span class="kw">fn </span>primary(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; TreeNode {
+    <span class="kw">fn </span>print_stmt(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; TreeNode {
         <span class="self">self</span>.index += <span class="number">1</span>;
-        <span class="kw">match </span><span class="self">self</span>.tokens[<span class="self">self</span>.index - <span class="number">1</span>] {
-            Token::Number(num) =&gt; TreeNode::Number(num),
+        TreeNode::Print(<span class="self">self</span>.expression().into())
+    }
+
+    <span class="kw">fn </span>expression_stmt(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; TreeNode {
+        TreeNode::Expression(<span class="self">self</span>.expression().into())
+    }
+
+    <span class="kw">fn </span>expression(<span class="kw-2">&amp;mut </span><span class="self">self</span>) -&gt; TreeNode {
+        <span class="self">self</span>.index += <span class="number">1</span>;
+        <span class="kw">match </span><span class="kw-2">&amp;</span><span class="self">self</span>.tokens[<span class="self">self</span>.index - <span class="number">1</span>] {
+            Token::Number(num) =&gt; TreeNode::Value(Box::new(<span class="kw-2">*</span>num)),
+            Token::Identifier(id) =&gt; TreeNode::Value(Box::new(id.clone())),
             <span class="kw">_ </span>=&gt; <span class="macro">todo!</span>(),
         }
     }

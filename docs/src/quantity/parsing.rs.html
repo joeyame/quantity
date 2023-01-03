@@ -3,7 +3,139 @@
 <span id="3">3</span>
 <span id="4">4</span>
 <span id="5">5</span>
-</pre><pre class="rust"><code><span class="kw">mod </span>parser;
+<span id="6">6</span>
+<span id="7">7</span>
+<span id="8">8</span>
+<span id="9">9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+</pre><pre class="rust"><code><span class="doccomment">//! This module contains information about quantity&#39;s syntactic grammar
+//! and how it is parsed into an Abstract Syntax Tree
+//!
+//! # Syntactic Grammar for Quantity
+//! The Syntactic grammar for Quantity will be very unique. It is a functional language that does
+//! allow the grouping of data in structures. The specialty aspect of it, though, is that it has
+//! first-class support for connecting units to numeric values. This can prevent confusion when
+//! working with measurements or other data forms that can be input in a variety of ways.
+//!
+//! For example, the following expression:
+//! ```text
+//! 40ft + 20m
+//! ```
+//! is valid in the quantity language, and the result will NOT be 60!
+//!
+//! ### What is a Syntactic Grammar
+//! Similar to the lexical grammar, the syntactic grammar is a somewhat higher level set of rules
+//! for how the language is structured. Now we are done with individual characters and move on to how
+//! sentences are formed.
+//!
+//! For this document, the syntax of the grammar will be expressed in the form given by the author of
+//! crafting interpreters, in
+//! [section 5.1](https://craftinginterpreters.com/representing-code.html#context-free-grammars).
+//!
+//! ### New Language Rule Set
+//! ```text
+//! program        -&gt; statement* EOF ;
+//!
+//! statement      -&gt; exprStmt
+//!                 | printStmt ;
+//!
+//! exprStmt       -&gt; expression ;
+//! printStmt      -&gt; &quot;print&quot; expression ;
+//!
+//! expression     -&gt; NUMBER
+//!                 | IDENTIFIER ;
+//! ```
+//!
+//! Currently this is an extremely simplistic look at the language, as it is my first attempt at creating one.
+//!
+//! ### Old Language Rule Set
+//! ```text
+//! statement      -&gt; quantity
+//!                 | unit
+//!                 | declaration
+//!                 | expression
+//!
+//! quantity       -&gt; &quot;qty&quot; type composition?
+//! composition    -&gt; &quot;(&quot; quantity_list ( &quot;/&quot; quantity_list ) &quot;)&quot;
+//! quantity_list  -&gt; type ( &quot;*&quot; type )+
+//! unit           -&gt; IDENTIFIER ( &quot;|&quot; IDENTIFIER )+ ( &quot;=&quot; expression )?
+//!
+//! declaration    -&gt; type IDENTIFIER = expression
+//!
+//! expression     -&gt; closure
+//!                 | literal
+//!                 | IDENTIFIER
+//!
+//! closure        -&gt; &quot;|&quot; arguments+ &quot;|&quot;
+//!
+//! arguments      -&gt;
+//! operation      -&gt; IDENTIFIER operator
+//! literal        -&gt; NUMBER type
+//! type           -&gt; IDENTIFIER
+//! ```
+
+</span><span class="kw">mod </span>parser;
 <span class="kw">mod </span>tree;
 
 <span class="kw">pub use </span>parser::Parser;
