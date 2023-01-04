@@ -1,14 +1,17 @@
 # The Quantity Programming Language
-A type-driven, mid-level programming language meant for scientific computation and simulation
+A type-driven, mid-level programming language meant for scientific computation, mathematics, and simulation
 
-The main design points driving the creation of this programming language are:
+*All links on this page will redirect you to the official documentation for this project*
 
-| Concept    | Description                                                      |
-| ---------- | ---------------------------------------------------------------- |
-| Explicit   | Quantity code shall have no undefined behavior                   |
-| Beautiful  | Quantity code shall be easy to read and understand               |
-| Functional | Quantity code shall be purely functional yet organized           |
-| Expressive | Quantity code shall require minimal boilerplate to be productive |
+Every decision made in the design of this language is based off the following axioms:
+1. Behavior is defined
+3. Boilerplate is wrong
+8. Limitations are few
+4. Values have meaning
+2. Speed is implicit
+6. Functionality is composed
+7. Organization is important
+9. Documentation is powerful
 
 ## Table of Contents
 The following table will link to the official documentation for this project
