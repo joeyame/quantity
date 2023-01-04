@@ -287,10 +287,10 @@
             [<span class="string">&#39; &#39; </span>| <span class="string">&#39;\t&#39; </span>| <span class="string">&#39;\r&#39;</span>, ..] =&gt; (<span class="prelude-val">None</span>, cursor + <span class="number">1</span>),
 
             <span class="comment">// Operators
-            </span>[<span class="string">&#39;+&#39;</span>, ..] =&gt; (Plus.into(), cursor + <span class="number">1</span>),
-            [<span class="string">&#39;=&#39;</span>, ..] =&gt; (Equal.into(), cursor + <span class="number">1</span>),
+            // [&#39;+&#39;, ..] =&gt; (Plus.into(), cursor + 1),
+            // [&#39;=&#39;, ..] =&gt; (Equal.into(), cursor + 1),
 
-            <span class="comment">// Bracketing
+            // Bracketing
             </span>[<span class="string">&#39;(&#39;</span>, ..] =&gt; (LeftParenthesis.into(), cursor + <span class="number">1</span>),
             [<span class="string">&#39;)&#39;</span>, ..] =&gt; (RightParenthesis.into(), cursor + <span class="number">1</span>),
 

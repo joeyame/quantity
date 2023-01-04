@@ -23,8 +23,8 @@ pub fn scan_source(source: impl Into<String>) -> Vec<Token> {
             [' ' | '\t' | '\r', ..] => (None, cursor + 1),
 
             // Operators
-            ['+', ..] => (Plus.into(), cursor + 1),
-            ['=', ..] => (Equal.into(), cursor + 1),
+            // ['+', ..] => (Plus.into(), cursor + 1),
+            // ['=', ..] => (Equal.into(), cursor + 1),
 
             // Bracketing
             ['(', ..] => (LeftParenthesis.into(), cursor + 1),

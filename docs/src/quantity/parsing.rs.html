@@ -69,6 +69,11 @@
 <span id="69">69</span>
 <span id="70">70</span>
 <span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
+<span id="76">76</span>
 </pre><pre class="rust"><code><span class="doccomment">//! This module contains information about quantity&#39;s syntactic grammar
 //! and how it is parsed into an Abstract Syntax Tree
 //!
@@ -96,6 +101,11 @@
 //! ### New Language Rule Set
 //! ```text
 //! program        -&gt; statement* EOF ;
+//!
+//! declaration    -&gt; qtyDecl
+//!                 | statement ;
+//!
+//! qtyDecl        -&gt; &quot;qty&quot; IDENTIFIER ( &quot;(&quot; expression &quot;)&quot; )? ;
 //!
 //! statement      -&gt; exprStmt
 //!                 | printStmt ;

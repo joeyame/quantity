@@ -145,6 +145,13 @@
 <span id="145">145</span>
 <span id="146">146</span>
 <span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
 </pre><pre class="rust"><code><span class="doccomment">//! # The Quantity Programming Language
 //! A type-driven, mid-level programming language meant for scientific computation and simulation
 //!
@@ -255,13 +262,19 @@
 <span class="kw">use </span>std::path::PathBuf;
 
 <span class="comment">// Load in core modules
+// #[doc(hidden)]
 </span><span class="kw">mod </span>docs;
-<span class="kw">mod </span>interface;
-<span class="kw">mod </span>interpreting;
-<span class="kw">mod </span>parsing;
-<span class="kw">mod </span>scanning;
+<span class="attribute">#[doc(hidden)]
+</span><span class="kw">mod </span>interface;
+<span class="attribute">#[doc(hidden)]
+</span><span class="kw">mod </span>interpreting;
+<span class="attribute">#[doc(hidden)]
+</span><span class="kw">mod </span>parsing;
+<span class="attribute">#[doc(hidden)]
+</span><span class="kw">mod </span>scanning;
 
-<span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
+<span class="attribute">#[doc(hidden)]
+</span><span class="kw">fn </span>main() -&gt; <span class="prelude-ty">Result</span>&lt;()&gt; {
     <span class="comment">// Get command line arguments
     </span><span class="kw">let </span>cli = Cli::parse();
 
@@ -277,7 +290,8 @@
     </span><span class="prelude-val">Ok</span>(())
 }
 
-<span class="kw">pub fn </span>run(code: String) {
+<span class="attribute">#[doc(hidden)]
+</span><span class="kw">pub fn </span>run(code: String) {
     <span class="macro">println!</span>(<span class="string">&quot;Scanning the following line:&quot;</span>);
     <span class="macro">println!</span>(<span class="string">&quot;\&quot;{}\&quot;&quot;</span>, code);
 

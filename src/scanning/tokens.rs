@@ -1,7 +1,7 @@
 #[derive(Debug, PartialEq, Clone)]
 pub enum Token {
     // Single-character tokens
-    Plus,
+    // Plus,
     // Minus,
     // Slash,
     // Star,
@@ -9,7 +9,7 @@ pub enum Token {
     RightParenthesis,
 
     // One or two character tokens
-    Equal,
+    // Equal,
 
     // Literal tokens
     Number(f64),

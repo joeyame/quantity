@@ -108,12 +108,18 @@ use interface::*;
 use std::path::PathBuf;
 
 // Load in core modules
+// #[doc(hidden)]
 mod docs;
+#[doc(hidden)]
 mod interface;
+#[doc(hidden)]
 mod interpreting;
+#[doc(hidden)]
 mod parsing;
+#[doc(hidden)]
 mod scanning;
 
+#[doc(hidden)]
 fn main() -> Result<()> {
     // Get command line arguments
     let cli = Cli::parse();
@@ -130,6 +136,7 @@ fn main() -> Result<()> {
     Ok(())
 }
 
+#[doc(hidden)]
 pub fn run(code: String) {
     println!("Scanning the following line:");
     println!("\"{}\"", code);

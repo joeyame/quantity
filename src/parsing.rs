@@ -26,6 +26,11 @@
 //! ```text
 //! program        -> statement* EOF ;
 //!
+//! declaration    -> qtyDecl
+//!                 | statement ;
+//!
+//! qtyDecl        -> "qty" IDENTIFIER ( "(" expression ")" )? ;
+//!
 //! statement      -> exprStmt
 //!                 | printStmt ;
 //!

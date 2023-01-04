@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {};
+window.SIDEBAR_ITEMS = {"mod":[["functions","This is a function of the quantity language"],["variables","Learn more about variables in the Quantity programming language"]]};
