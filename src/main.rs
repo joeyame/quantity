@@ -1,37 +1,59 @@
 //! # The Quantity Programming Language
-//! A type-driven, mid-level programming language meant for scientific computation, mathematics, and simulation
+//! A high-performance statically typed programming language meant for
+//! scientific computation and simulation.
 //!
-//! > *All links on this page will redirect you to the official documentation for this project*
+//! Optimized for use in data collection, processing, and presentation.
 //!
-//! Every decision made in the design of this language is based off the following axioms:
-//! 1. [Behavior is defined](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#behavior-is-defined)
-//! 3. [Boilerplate is wrong](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#boilerplate-is-wrong)
-//! 8. [Limitations are few](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#limitations-are-few)
-//! 4. [Values have meaning](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#)
-//! 2. [Speed is implicit](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#)
-//! 6. [Functionality is composed](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#)
-//! 7. [Organization is important](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#)
-//! 9. [Documentation is powerful](https://joeyame.github.io/quantity/quantity/docs/axioms/index.html#)
+//! ```qty
+//! qty length meters|meter|m
+//! qty area meters^2|meter^2|m^2 (length*length)
 //!
+//! rect_area = area|length l, length w| {
+//!     l*w
+//! }
+//!
+//! print rect_area( 12m, 2m )
+//! ```
+//!
+//! > *Please note that all links on this page will redirect you to the official documentation for this project*
+//!
+//! # The Seven Laws of Quantity
+//! Listed below are the laws that describe and define this language. Clicking any on any of them will take
+//! you to a more detailed description of their meaning
+//! 1. [Law of Brevity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#1-law-of-brevity)
+//! 2. [Law of Clarity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#2-law-of-clarity)
+//! 3. [Law of Duality](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#3-law-of-duality)
+//! 4. [Law of Tensity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#2-law-of-total-definition)
+//! 5. [Law of Suavity]()
+//! 6. [Law of Piosity]()
+//! 7. [Law of Alacrity]()
+
+// ! 8. [Limitations are few](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#limitations-are-few)
+// ! 4. [Values have meaning](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#)
+// ! 2. [Speed is implicit](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#)
+// ! 6. [Functionality is composed](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#)
+// ! 7. [Organization is important](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#)
+// ! 9. [Documentation is powerful](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#)
+// !
 // ! ## Table of Contents
-//!
-//! | Page                                                                     | Description                                                   |
-//! | ------------------------------------------------------------------------ | ------------------------------------------------------------- |
-//! | [Docs](https://joeyame.github.io/quantity/quantity/docs)                 | Documentation related to the language itself                  |
-//! | [Interface](https://joeyame.github.io/quantity/quantity/interface)       | Documentation about how the interpreter can be run            |
-//! | [Interpreting](https://joeyame.github.io/quantity/quantity/interpreting) | Documentation about the interpreter itself                    |
-//! | [Parsing](https://joeyame.github.io/quantity/quantity/parsing)           | Documentation about how the AST is generated                  |
-//! | [Scanning](https://joeyame.github.io/quantity/quantity/scanning)         | Documentation about how the source code is parsed into tokens |
-//!
+// !
+// ! | Page                                                                     | Description                                                   |
+// ! | ------------------------------------------------------------------------ | ------------------------------------------------------------- |
+// ! | [Docs](https://joeyame.github.io/quantity/quantity/docs)                 | Documentation related to the language itself                  |
+// ! | [Interface](https://joeyame.github.io/quantity/quantity/interface)       | Documentation about how the interpreter can be run            |
+// ! | [Interpreting](https://joeyame.github.io/quantity/quantity/interpreting) | Documentation about the interpreter itself                    |
+// ! | [Parsing](https://joeyame.github.io/quantity/quantity/parsing)           | Documentation about how the AST is generated                  |
+// ! | [Scanning](https://joeyame.github.io/quantity/quantity/scanning)         | Documentation about how the source code is parsed into tokens |
+// !
 // End of readme documentation
-//!
-//! | Concept    | Description                                                      |
-//! | ---------- | ---------------------------------------------------------------- |
-//! | Explicit   | Quantity code shall have no undefined behavior                   |
-//! | Beautiful  | Quantity code shall be easy to read and understand               |
-//! | Functional | Quantity code shall be purely functional yet organized           |
-//! | Expressive | Quantity code shall require minimal boilerplate to be productive |
-//!
+//
+//  | Concept    | Description                                                      |
+//  | ---------- | ---------------------------------------------------------------- |
+//  | Explicit   | Quantity code shall have no undefined behavior                   |
+//  | Beautiful  | Quantity code shall be easy to read and understand               |
+//  | Functional | Quantity code shall be purely functional yet organized           |
+//  | Expressive | Quantity code shall require minimal boilerplate to be productive |
+//
 // !
 // ! ## Quantity Code Examples
 // ! The following snippets of code show what is (or will be) possible using the quantity programming language

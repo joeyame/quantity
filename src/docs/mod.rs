@@ -38,6 +38,6 @@
 //! [More about variables...](variables)
 
 // Bring in the other documentation sections
-mod axioms;
 mod functions;
+mod laws;
 mod variables;

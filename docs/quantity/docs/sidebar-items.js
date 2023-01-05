@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":[["axioms","Learn more about the axioms driving the design of the Quantity programming language"],["functions","This is a function of the quantity language"],["variables","Learn more about variables in the Quantity programming language"]]};
+window.SIDEBAR_ITEMS = {"mod":[["functions","This is a function of the quantity language"],["laws","Learn more about the laws driving the Quantity programming language"],["variables","Learn more about variables in the Quantity programming language"]]};
