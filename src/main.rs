@@ -20,13 +20,13 @@
 //! # The Seven Laws of Quantity
 //! Listed below are the laws that describe and define this language. Clicking any on any of them will take
 //! you to a more detailed description of their meaning
-//! 1. [Law of Brevity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#1-law-of-brevity)
-//! 2. [Law of Clarity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#2-law-of-clarity)
-//! 3. [Law of Duality](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#3-law-of-duality)
-//! 4. [Law of Tensity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#2-law-of-total-definition)
-//! 5. [Law of Suavity]()
-//! 6. [Law of Piosity]()
-//! 7. [Law of Alacrity]()
+//! 1. [Law of Reality](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#1-law-of-reality) | *the world or the state of things as they actually exist*
+//! 2. [Law of Duality](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#2-law-of-duality) | *an instance of opposition or contrast between two concepts*
+//! 3. [Law of Omneity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#3-law-of-omneity) | *The state of being all-comprehensive*
+//! 4. [Law of Brevity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#4-law-of-brevity) | *concise and exact use of words in writing or speech*
+//! 5. [Law of Clarity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#5-law-of-clarity) | *quality or state of being clear*
+//! 6. [Law of Piosity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#6-law-of-piosity) | *an obvious manifestation of devoutness*
+//! 7. [Law of Rabbity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#5-law-of-rabbity) | *resembling, characteristic of, or containing rabbits*
 
 // ! 8. [Limitations are few](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#limitations-are-few)
 // ! 4. [Values have meaning](https://joeyame.github.io/quantity/quantity/docs/laws/index.html#)

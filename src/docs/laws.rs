@@ -1,4 +1,16 @@
 //! Learn more about the laws driving the Quantity programming language
+//! 
+//! # 1. Law of Reality
+//! The Law of Reality states that
+//! > "All values in `Quantity` represent reality"
+//! 
+//! No matter what language you program in - if you are working with real values
+//! that have a unit with them, it gets stripped away until it is just the magnitude
+//! itself. Any conversions have to be explicitly performed and variables have to
+//! be cleverly named to ensure that the units in numbers do not get mixed up.
+//! 
+//! In this language values 
+//! 
 //! # 1. Law of Brevity
 //! The Law of Brevity states that
 //! > "Every character in `Quantity` code is important and
@@ -39,9 +51,9 @@
 //! Imagine writing macros for your code in the same language as the code itself!
 //! This functionality is supported in this language.
 //!
-//! # X. Law of Total Definition
-//! The Law of Total Definition states that
-//! > "All expressions of `Quantity` code are fully defined"
+//! # 4. Law of Omneity
+//! The Law of Omneity states that
+//! > "All expressions of `Quantity` code are comprehensively defined"
 //!
 //! With `Quantity`, there is no undefined behavior that you need to be aware of
 //! when targeting different systems. One of the great disadvantages of C and C++
@@ -49,7 +61,8 @@
 //! defined uses of the language. Compilers on different platforms might handle
 //! certain blocks of code differently. How can you have confidence in your work
 //! with that fact looming on your mind?
-//!  
+//! 
+//! In this language - every behavior is fully defined behavior.
 //!
 //! # Limitations are Few
 //! Unlike many other languages, Quantity will not get in your way. It empowers you to
