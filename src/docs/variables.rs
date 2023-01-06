@@ -37,6 +37,13 @@
 //! let first_flag = let second_flag = false
 //! ```
 //!
-//! # Variables and Quantity's Axioms
-//! This section explains how the behavior of variables fits the axioms for
-//! this language.
+//! # Variables and Quantity's Laws
+//! This section explains how the [Laws of Quantity](https://joeyame.github.io/quantity/quantity/docs/laws/index.html)
+//! influenced the design and implementation of variables for this language.
+//!
+//! ### 🎁 Law of Amenity
+//! * Documentation comments added before or after a variable declaration will be
+//! accessible throughout the code base and in the exported documentation.
+//!
+//! * The type of a variable can easily be determined while writing the code.
+//!
