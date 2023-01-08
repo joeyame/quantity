@@ -40,19 +40,30 @@ pub fn match_number(text: &[char], cursor: &usize) -> (Option<Token>, usize) {
 pub fn match_identifier(text: &[char], cursor: &usize) -> (Option<Token>, usize) {
     let end_index = text
         .iter()
-        .position(|&c| !(c.is_alphanumeric() || c == '_'))
+        .position(|&c| !valid_identifier_char(c, false))
         .unwrap_or(text.len());
 
     let name: String = text[..end_index].iter().collect();
 
     (
         match name.as_str() {
-            "qty" => Qty,
+            "let" => Let,
             _ => Identifier(name),
         }
         .into(),
         cursor + end_index,
     )
+}
+
+/// Determines whether or not a character is valid for an identifier
+/// in the beginning and after.
+pub fn valid_identifier_char(c: char, first_letter: bool) -> bool {
+    matches!((first_letter, c), (_, 'a'..='z' | 'A'..='Z' | '_') | (false, '0'..='9'))
+}
+
+/// Returns whether or not a char slice contains whitespace.
+pub fn contains_whitespace(text: &[char]) -> bool {
+    text.contains(&' ') || text.contains(&'\n') || text.contains(&'\t')
 }
 
 #[cfg(test)]
@@ -65,7 +76,7 @@ mod tests {
         let name: String = name.into();
         let name_chars: Vec<char> = name.chars().collect();
         let name_slice = &name_chars[..];
-        match_identifier(&name_slice, &start_index)
+        match_identifier(name_slice, &start_index)
     }
 
     #[test]

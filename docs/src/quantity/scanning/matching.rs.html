@@ -95,6 +95,17 @@
 <span id="95">95</span>
 <span id="96">96</span>
 <span id="97">97</span>
+<span id="98">98</span>
+<span id="99">99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
 </pre><pre class="rust"><code><span class="doccomment">//! The matching module contains various utility functions to make the pattern matching
 //! part of the scanner less complex
 
@@ -137,19 +148,30 @@
 </span><span class="kw">pub fn </span>match_identifier(text: <span class="kw-2">&amp;</span>[char], cursor: <span class="kw-2">&amp;</span>usize) -&gt; (<span class="prelude-ty">Option</span>&lt;Token&gt;, usize) {
     <span class="kw">let </span>end_index = text
         .iter()
-        .position(|<span class="kw-2">&amp;</span>c| !(c.is_alphanumeric() || c == <span class="string">&#39;_&#39;</span>))
+        .position(|<span class="kw-2">&amp;</span>c| !valid_identifier_char(c, <span class="bool-val">false</span>))
         .unwrap_or(text.len());
 
     <span class="kw">let </span>name: String = text[..end_index].iter().collect();
 
     (
         <span class="kw">match </span>name.as_str() {
-            <span class="string">&quot;qty&quot; </span>=&gt; Qty,
+            <span class="string">&quot;let&quot; </span>=&gt; Let,
             <span class="kw">_ </span>=&gt; Identifier(name),
         }
         .into(),
         cursor + end_index,
     )
+}
+
+<span class="doccomment">/// Determines whether or not a character is valid for an identifier
+/// in the beginning and after.
+</span><span class="kw">pub fn </span>valid_identifier_char(c: char, first_letter: bool) -&gt; bool {
+    <span class="macro">matches!</span>((first_letter, c), (<span class="kw">_</span>, <span class="string">&#39;a&#39;</span>..=<span class="string">&#39;z&#39; </span>| <span class="string">&#39;A&#39;</span>..=<span class="string">&#39;Z&#39; </span>| <span class="string">&#39;_&#39;</span>) | (<span class="bool-val">false</span>, <span class="string">&#39;0&#39;</span>..=<span class="string">&#39;9&#39;</span>))
+}
+
+<span class="doccomment">/// Returns whether or not a char slice contains whitespace.
+</span><span class="kw">pub fn </span>contains_whitespace(text: <span class="kw-2">&amp;</span>[char]) -&gt; bool {
+    text.contains(<span class="kw-2">&amp;</span><span class="string">&#39; &#39;</span>) || text.contains(<span class="kw-2">&amp;</span><span class="string">&#39;\n&#39;</span>) || text.contains(<span class="kw-2">&amp;</span><span class="string">&#39;\t&#39;</span>)
 }
 
 <span class="attribute">#[cfg(test)]
@@ -162,7 +184,7 @@
         <span class="kw">let </span>name: String = name.into();
         <span class="kw">let </span>name_chars: Vec&lt;char&gt; = name.chars().collect();
         <span class="kw">let </span>name_slice = <span class="kw-2">&amp;</span>name_chars[..];
-        match_identifier(<span class="kw-2">&amp;</span>name_slice, <span class="kw-2">&amp;</span>start_index)
+        match_identifier(name_slice, <span class="kw-2">&amp;</span>start_index)
     }
 
     <span class="attribute">#[test]

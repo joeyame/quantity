@@ -40,4 +40,5 @@
 // Bring in the other documentation sections
 mod functions;
 mod laws;
+mod operators;
 mod variables;

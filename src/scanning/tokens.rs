@@ -1,12 +1,15 @@
 #[derive(Debug, PartialEq, Clone)]
 pub enum Token {
-    // Single-character tokens
-    // Plus,
-    // Minus,
-    // Slash,
-    // Star,
-    LeftParenthesis,
-    RightParenthesis,
+    // LeftParenthesis,
+    // RightParenthesis,
+    // LeftBrace,
+    // RightBrace,
+    // Comma,
+    // Dot,
+    Minus,
+    Plus,
+    Slash,
+    Star,
 
     // One or two character tokens
     // Equal,
@@ -15,10 +18,12 @@ pub enum Token {
     Number(f64),
     Identifier(String),
 
-    // Mechanics token
-    Eof,
+    // Control Flow Tokens
     Eol,
+    Eof,
 
     // Keywords
-    Qty,
+    Let,
+    Assign,
+    // Qty,
 }

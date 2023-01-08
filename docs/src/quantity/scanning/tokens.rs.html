@@ -22,15 +22,23 @@
 <span id="22">22</span>
 <span id="23">23</span>
 <span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
 </pre><pre class="rust"><code><span class="attribute">#[derive(Debug, PartialEq, Clone)]
 </span><span class="kw">pub enum </span>Token {
-    <span class="comment">// Single-character tokens
-    // Plus,
-    // Minus,
-    // Slash,
-    // Star,
-    </span>LeftParenthesis,
-    RightParenthesis,
+    <span class="comment">// LeftParenthesis,
+    // RightParenthesis,
+    // LeftBrace,
+    // RightBrace,
+    // Comma,
+    // Dot,
+    </span>Minus,
+    Plus,
+    Slash,
+    Star,
 
     <span class="comment">// One or two character tokens
     // Equal,
@@ -39,12 +47,14 @@
     </span>Number(f64),
     Identifier(String),
 
-    <span class="comment">// Mechanics token
-    </span>Eof,
-    Eol,
+    <span class="comment">// Control Flow Tokens
+    </span>Eol,
+    Eof,
 
     <span class="comment">// Keywords
-    </span>Qty,
-}
+    </span>Let,
+    Assign,
+    <span class="comment">// Qty,
+</span>}
 </code></pre></div>
 </section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="quantity" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.65.0 (897e37553 2022-11-02)" ></div></body></html>

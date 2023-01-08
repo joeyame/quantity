@@ -14,21 +14,28 @@ pub fn scan_source(source: impl Into<String>) -> Vec<Token> {
             // Comments
             ['/', '/', rest @ ..] => skip_line(rest, cursor + 2),
 
-            // Literals (number, identifier)
+            // Literals (number, identifier, hump)
             [rest @ ..] if ('0'..='9').contains(&rest[0]) => match_number(rest, &cursor),
-            [rest @ ..] if rest[0].is_alphabetic() => match_identifier(rest, &cursor),
+            [rest @ ..] if valid_identifier_char(rest[0], true) => match_identifier(rest, &cursor),
+            // ['_', rest @ .., '_', ..] if !contains_whitespace(rest) => (
+            //     Identifier(rest.iter().collect::<String>()).into(),
+            //     rest.len() + 2,
+            // ),
 
             // Skip whitespace
             ['\n', ..] => (Eol.into(), cursor + 1),
             [' ' | '\t' | '\r', ..] => (None, cursor + 1),
 
             // Operators
-            // ['+', ..] => (Plus.into(), cursor + 1),
-            // ['=', ..] => (Equal.into(), cursor + 1),
+            ['+', ..] => (Plus.into(), cursor + 1),
+            ['-', ..] => (Minus.into(), cursor + 1),
+            ['*', ..] => (Star.into(), cursor + 1),
+            ['/', ..] => (Slash.into(), cursor + 1),
+            ['=', ..] => (Assign.into(), cursor + 1),
 
             // Bracketing
-            ['(', ..] => (LeftParenthesis.into(), cursor + 1),
-            [')', ..] => (RightParenthesis.into(), cursor + 1),
+            // ['(', ..] => (LeftParenthesis.into(), cursor + 1),
+            // [')', ..] => (RightParenthesis.into(), cursor + 1),
 
             // Error
             _ => panic!("Scanner not yet implemented!"),
@@ -36,7 +43,9 @@ pub fn scan_source(source: impl Into<String>) -> Vec<Token> {
 
         // Move cursor to new spot and add token if not None
         cursor = new_cursor;
-        token.map(|tok| token_list.push(tok));
+        if let Some(tok) = token {
+            token_list.push(tok);
+        }
     }
     token_list.push(Eof);
     token_list

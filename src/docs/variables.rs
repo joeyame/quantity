@@ -42,8 +42,22 @@
 //! influenced the design and implementation of variables for this language.
 //!
 //! ### 🎁 Law of Amenity
-//! * Documentation comments added before or after a variable declaration will be
+//! Documentation comments added before or after a variable declaration will be
 //! accessible throughout the code base and in the exported documentation.
 //!
-//! * The type of a variable can easily be determined while writing the code.
+//! The type of a variable can easily be determined before runtime.
 //!
+//! ### 📝 Law of Brevity
+//! Type of a variable can be implicitly determined by assigning it a value, saving
+//! on the overall amount of code that must be written.
+//!
+//! Assignments return the assigned value, allowing for stacked and more concise code.
+//!
+//! ### 🪢 Law of Tensity
+//! Declaring a new variable will result in 100% repeatable behavior, 100% of the
+//! time. Even if you don't fully initialize a value, the default initial value will
+//! always be the same.
+//!
+//! ### 🐇 Law of Rabbity
+//! The Desert Cottontail can live up to two years. Your variables can live longer if
+//! you play your cards right.

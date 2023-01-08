@@ -262,6 +262,15 @@
 <span id="262">262</span>
 <span id="263">263</span>
 <span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
 </pre><pre class="rust"><code><span class="kw">use </span><span class="kw">super</span>::tokens::{Token, Token::<span class="kw-2">*</span>};
 <span class="comment">// use super::tokens::TokenType::*;
 </span><span class="kw">use </span><span class="kw">super</span>::matching::<span class="kw-2">*</span>;
@@ -278,29 +287,38 @@
             <span class="comment">// Comments
             </span>[<span class="string">&#39;/&#39;</span>, <span class="string">&#39;/&#39;</span>, rest @ ..] =&gt; skip_line(rest, cursor + <span class="number">2</span>),
 
-            <span class="comment">// Literals (number, identifier)
+            <span class="comment">// Literals (number, identifier, hump)
             </span>[rest @ ..] <span class="kw">if </span>(<span class="string">&#39;0&#39;</span>..=<span class="string">&#39;9&#39;</span>).contains(<span class="kw-2">&amp;</span>rest[<span class="number">0</span>]) =&gt; match_number(rest, <span class="kw-2">&amp;</span>cursor),
-            [rest @ ..] <span class="kw">if </span>rest[<span class="number">0</span>].is_alphabetic() =&gt; match_identifier(rest, <span class="kw-2">&amp;</span>cursor),
+            [rest @ ..] <span class="kw">if </span>valid_identifier_char(rest[<span class="number">0</span>], <span class="bool-val">true</span>) =&gt; match_identifier(rest, <span class="kw-2">&amp;</span>cursor),
+            <span class="comment">// [&#39;_&#39;, rest @ .., &#39;_&#39;, ..] if !contains_whitespace(rest) =&gt; (
+            //     Identifier(rest.iter().collect::&lt;String&gt;()).into(),
+            //     rest.len() + 2,
+            // ),
 
-            <span class="comment">// Skip whitespace
+            // Skip whitespace
             </span>[<span class="string">&#39;\n&#39;</span>, ..] =&gt; (Eol.into(), cursor + <span class="number">1</span>),
             [<span class="string">&#39; &#39; </span>| <span class="string">&#39;\t&#39; </span>| <span class="string">&#39;\r&#39;</span>, ..] =&gt; (<span class="prelude-val">None</span>, cursor + <span class="number">1</span>),
 
             <span class="comment">// Operators
-            // [&#39;+&#39;, ..] =&gt; (Plus.into(), cursor + 1),
-            // [&#39;=&#39;, ..] =&gt; (Equal.into(), cursor + 1),
+            </span>[<span class="string">&#39;+&#39;</span>, ..] =&gt; (Plus.into(), cursor + <span class="number">1</span>),
+            [<span class="string">&#39;-&#39;</span>, ..] =&gt; (Minus.into(), cursor + <span class="number">1</span>),
+            [<span class="string">&#39;*&#39;</span>, ..] =&gt; (Star.into(), cursor + <span class="number">1</span>),
+            [<span class="string">&#39;/&#39;</span>, ..] =&gt; (Slash.into(), cursor + <span class="number">1</span>),
+            [<span class="string">&#39;=&#39;</span>, ..] =&gt; (Assign.into(), cursor + <span class="number">1</span>),
 
-            // Bracketing
-            </span>[<span class="string">&#39;(&#39;</span>, ..] =&gt; (LeftParenthesis.into(), cursor + <span class="number">1</span>),
-            [<span class="string">&#39;)&#39;</span>, ..] =&gt; (RightParenthesis.into(), cursor + <span class="number">1</span>),
+            <span class="comment">// Bracketing
+            // [&#39;(&#39;, ..] =&gt; (LeftParenthesis.into(), cursor + 1),
+            // [&#39;)&#39;, ..] =&gt; (RightParenthesis.into(), cursor + 1),
 
-            <span class="comment">// Error
+            // Error
             </span><span class="kw">_ </span>=&gt; <span class="macro">panic!</span>(<span class="string">&quot;Scanner not yet implemented!&quot;</span>),
         };
 
         <span class="comment">// Move cursor to new spot and add token if not None
         </span>cursor = new_cursor;
-        token.map(|tok| token_list.push(tok));
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(tok) = token {
+            token_list.push(tok);
+        }
     }
     token_list.push(Eof);
     token_list
